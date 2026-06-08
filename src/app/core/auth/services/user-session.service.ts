@@ -33,6 +33,10 @@ export class UserSessionService {
     return this.getClaims()?.role ?? null;
   }
 
+  isAuthenticated(): boolean {
+    return this.getClaims() !== null;
+  }
+
   isAdmin(): boolean {
     return this.getRole() === UserRole.ADMIN;
   }
