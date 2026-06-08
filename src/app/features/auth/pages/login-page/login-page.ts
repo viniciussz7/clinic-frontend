@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthFacade } from '../../facades/auth.facade';
+import { AuthStorageService } from '../../services/auth-storage';
 
 @Component({
   selector: 'app-login-page',
@@ -11,6 +12,7 @@ import { AuthFacade } from '../../facades/auth.facade';
 export class LoginPage {
   private readonly fb = inject(FormBuilder);
   private readonly authFacade = inject(AuthFacade);
+  private readonly authStorage = inject(AuthStorageService);
 
   protected readonly loginForm = this.fb.group({
     email: this.fb.nonNullable.control('', [Validators.required, Validators.email]),
@@ -28,7 +30,8 @@ export class LoginPage {
     this.authFacade.login(request).subscribe({
       next: (response) => {
         console.log('Login realizado com sucesso');
-        console.log(response);
+        this.authStorage.saveToken(response.token);
+        console.log('Token salvo');
       },
 
       error: (error) => {
