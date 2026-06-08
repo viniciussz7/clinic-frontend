@@ -3,6 +3,7 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthFacade } from '../../facades/auth.facade';
 import { AuthStorageService } from '../../services/auth-storage';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-page',
@@ -15,6 +16,7 @@ export class LoginPage {
   private readonly authFacade = inject(AuthFacade);
   private readonly authStorage = inject(AuthStorageService);
   private readonly http = inject(HttpClient);
+  private readonly router = inject(Router);
 
   protected readonly loginForm = this.fb.group({
     email: this.fb.nonNullable.control('', [Validators.required, Validators.email]),
@@ -31,9 +33,8 @@ export class LoginPage {
 
     this.authFacade.login(request).subscribe({
       next: (response) => {
-        console.log('Login realizado com sucesso');
         this.authStorage.saveToken(response.token);
-        console.log('Token salvo');
+        this.router.navigate(['/dashboard']);
 
         //this.http.get('http://localhost:8080/admin/dashboard').subscribe({
           //next: (data) => {
