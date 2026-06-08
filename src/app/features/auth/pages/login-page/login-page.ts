@@ -35,17 +35,17 @@ export class LoginPage {
         this.authStorage.saveToken(response.token);
         console.log('Token salvo');
 
-        this.http.get('http://localhost:8080/admin/dashboard').subscribe({
-          next: (data) => {
-            console.log('Dashboard Admin');
-            console.log(data);
-          },
+        //this.http.get('http://localhost:8080/admin/dashboard').subscribe({
+          //next: (data) => {
+            //console.log('Dashboard Admin');
+            //console.log(data);
+          //},
 
-          error: (err) => {
-            console.error('Erro ao acessar dashboard');
-            console.error(err);
-          },
-        });
+          //error: (err) => {
+            //console.error('Erro ao acessar dashboard');
+            //console.error(err);
+          //},
+        //});
       },
 
       error: (error) => {
