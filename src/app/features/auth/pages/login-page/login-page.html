@@ -1,1 +1,68 @@
-<p>login-page works!</p>
+<div class="min-h-screen flex items-center justify-center bg-[#FAF8F5] px-4">
+  <div class="w-full max-w-md">
+    <div class="flex justify-center mb-8">
+      <img src="/images/logo-dra-lua.svg" alt="Lua CLinic Logo" class="w-52 h-auto" />
+    </div>
+
+    <div class="bg-white rounded-2xl shadow-lg p-8 border border-[#F1ECE3]">
+      <h1 class="text-2xl font-semibold text-center text-slate-800 mb-8">Acesse sua conta</h1>
+
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="space-y-5">
+        <div>
+          <label class="block text-sm font-medium text-slate-700 mb-2"> Email </label>
+
+          <input
+            type="email"
+            formControlName="email"
+            placeholder="Digite seu email"
+            class="w-full rounded-lg border border-[#D8D2C8] px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#C2A062]"
+          />
+
+          @if (loginForm.controls.email.touched && loginForm.controls.email.hasError('required')) {
+            <p class="mt-1 text-sm text-red-500">E-mail é obrigatório.</p>
+          }
+
+          @if (loginForm.controls.email.touched && loginForm.controls.email.hasError('email')) {
+            <p class="mt-1 text-sm text-red-500">Informe um e-mail válido.</p>
+          }
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-slate-700 mb-2"> Senha </label>
+
+          <input
+            type="password"
+            formControlName="password"
+            placeholder="Digite sua senha"
+            class="w-full rounded-lg border border-[#D8D2C8] px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#C2A062]"
+          />
+
+          @if (
+            loginForm.controls.password.touched && loginForm.controls.password.hasError('required')
+          ) {
+            <p class="mt-1 text-sm text-red-500">Senha é obrigatória.</p>
+          }
+
+          @if (
+            loginForm.controls.password.touched && loginForm.controls.password.hasError('minlength')
+          ) {
+            <p class="mt-1 text-sm text-red-500">A senha deve possuir pelo menos 6 caracteres.</p>
+          }
+        </div>
+
+        <div class="flex justify-end">
+          <button type="button" class="text-sm text-[#B89552] hover:underline">
+            Esqueceu sua senha?
+          </button>
+        </div>
+
+        <button
+          type="submit"
+          class="w-full rounded-lg bg-[#B89552] text-white py-3 font-medium hover:bg-[#A78649] transition-colors"
+        >
+          Entrar
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
