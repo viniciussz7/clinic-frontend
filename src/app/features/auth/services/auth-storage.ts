@@ -22,4 +22,8 @@ export class AuthStorageService {
   isAuthenticated(): boolean {
     return !!this.getToken();
   }
+
+  logout(): void {
+    this.clearToken();
+  }
 }
