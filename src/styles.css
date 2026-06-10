@@ -1,2 +1,27 @@
-/* You can add global styles to this file, and also import other style files */
 @import 'tailwindcss';
+
+@theme {
+
+  /* Brand */
+
+  --color-brand: #B89552;
+  --color-brand-hover: #A78649;
+  --color-brand-light: #C2A062;
+
+  /* Surface */
+
+  --color-surface: #FAF8F5;
+  --color-surface-card: #FFFFFF;
+  --color-surface-border: #F1ECE3;
+  --color-surface-input: #D8D2C8;
+
+  /* Feedback */
+
+  --color-success: #22C55E;
+  --color-danger: #EF4444;
+
+  /* Text */
+
+  --color-text-primary: #1E293B;
+  --color-text-secondary: #64748B;
+}

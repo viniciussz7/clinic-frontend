@@ -2,9 +2,11 @@ import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserSessionService } from '../../../../core/auth/services/user-session.service';
 import { AuthStorageService } from '../../../auth/services/auth-storage.service';
+import { ButtonComponent } from '../../../../shared/ui/button/button';
 
 @Component({
   selector: 'app-dashboard',
+  imports: [ ButtonComponent ],
   standalone: true,
   templateUrl: './dashboard.html',
 })
